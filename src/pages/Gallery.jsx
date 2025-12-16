@@ -9,7 +9,7 @@ const Gallary = () => {
           {/* Image Items */}
           {Array.from({ length: 10 }, (_, i) => (
             <div className="item" style={{ "--position": i + 1 }} key={i}>
-              <img src={`images/dragon_${i + 1}.jpeg`} alt={`Dragon ${i + 1}`} />
+              <img src={`/images/dragon_${i + 1}.jpeg`} alt={`Dragon ${i + 1}`} />
             </div>
           ))}
         </div>
