@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
+/* ---------------- IMPORT LOGO ---------------- */
+import logo from "../assets/myylogo.png";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -21,12 +24,12 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img
-              src="/src/assets/myylogo.png"
+              src={logo}
               alt="Logo"
               className="h-10 w-10 mr-2 rounded-full border-2 border-[#E2D4BA]"
             />
             <Link to="/" className="text-[#E2D4BA] text-2xl font-bold">
-              Rim mehndi art
+              Rim Mehndi Art
             </Link>
           </div>
 
