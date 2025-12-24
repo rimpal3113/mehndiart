@@ -1,6 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+/* ---------------- IMPORT IMAGES ---------------- */
+import m2 from "../assets/m2.jpg";
+import myPic from "../assets/mypic.jpeg";
+
 const About = () => {
   return (
     <section id="about" className="py-16 px-6 md:px-20">
@@ -34,7 +38,7 @@ const About = () => {
           
           {/* Left Image */}
           <motion.img
-            src="/src/assets/m2.jpg"
+            src={m2}
             alt="Mehndi Art"
             className="w-72 h-72 object-cover rounded-xl shadow-xl border-4 border-[#AF7A6D]"
             initial={{ opacity: 0, x: -50 }}
@@ -73,7 +77,7 @@ const About = () => {
           
           {/* Artist Image */}
           <motion.img
-            src="/src/assets/mypic.jpeg"
+            src={myPic}
             alt="Mehndi Specialist"
             className="
               w-40 h-40

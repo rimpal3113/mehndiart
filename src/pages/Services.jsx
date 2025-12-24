@@ -1,36 +1,44 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+/* ---------------- IMPORT IMAGES ---------------- */
+import bridal from "../assets/bridal.jpg";
+import arabic from "../assets/arbic.jpg";
+import traditional from "../assets/traditional.webp";
+import fancy from "../assets/fancy.jpg";
+import kids from "../assets/kids.webp";
+import art from "../assets/art.jpg";
+
 const Services = () => {
   const services = [
     {
       title: "Bridal Mehndi",
-      image: "/src/assets/bridal.jpg",
+      image: bridal,
       desc: "Beautiful, detailed, and elegant bridal mehndi designs to make your big day unforgettable."
     },
     {
       title: "Arabic Mehndi",
-      image: "/src/assets/arbic.jpg",
+      image: arabic,
       desc: "Bold strokes and flowing Arabic patterns perfect for any festive occasion."
     },
     {
       title: "Traditional Indian Mehndi",
-      image: "/src/assets/traditional.webp",
+      image: traditional,
       desc: "Classic and intricate Indian mehndi filled with culture, motifs, and elegance."
     },
     {
       title: "Modern Stylish Mehndi",
-      image: "/src/assets/fancy.jpg",
+      image: fancy,
       desc: "Trendy minimal and stylish mehndi patterns for modern fashion lovers."
     },
     {
       title: "Kids Mehndi Designs",
-      image: "/src/assets/kids.webp",
+      image: kids,
       desc: "Cute and simple mehndi designs specially created for kids."
     },
     {
       title: "Mehndi Drawing Designs",
-      image: "/src/assets/art.jpg",
+      image: art,
       desc: "Creative mehndi drawing designs featuring a variety of artistic sketches, patterns, and intricate details."
     }
   ];
