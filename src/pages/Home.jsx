@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+/* ---------------- IMPORT IMAGES ---------------- */
+import myLogo from "../assets/mylogo.png";
+import img1 from "../assets/myms1.png";
+import img2 from "../assets/myms2.jpg";
+import img3 from "../assets/myys3.jpg";
+
 /* ---------------- SNOW COMPONENT ---------------- */
 const Snow = () => {
   return (
@@ -19,7 +25,6 @@ const Snow = () => {
         />
       ))}
 
-      {/* Inline animation (Tailwind-safe) */}
       <style>
         {`
           @keyframes snowFall {
@@ -33,14 +38,49 @@ const Snow = () => {
   );
 };
 
-/* ---------------- HOME COMPONENT ---------------- */
-const Home = () => {
-  const images = [
-    "/src/assets/myms1.png",
-    "/src/assets/myms2.jpg",
-    "/src/assets/myys3.jpg",
+/* ---------------- FLOATING ICONS ---------------- */
+const FloatingIcons = () => {
+  const icons = [
+    { symbol: "🌸", top: "10%", left: "5%" },
+    { symbol: "✨", top: "20%", left: "80%" },
+    
+    { symbol: "🌿", top: "50%", left: "85%" },
+    { symbol: "👰", top: "60%", left: "10%" },
+    { symbol: "💐", top: "70%", left: "75%" },
+  
+    { symbol: "🎀", top: "45%", left: "60%" },
+    { symbol: "🌼", top: "15%", left: "60%" },
+    { symbol: "🌺", top: "80%", left: "25%" },
   ];
 
+  return (
+    <div className="absolute inset-0 pointer-events-none">
+      {icons.map((icon, i) => (
+        <motion.span
+          key={i}
+          className="absolute text-2xl sm:text-3xl md:text-4xl"
+          style={{ top: icon.top, left: icon.left }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          animate={{ y: [0, -5, 0] }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatType: "loop",
+            delay: i * 0.2,
+          }}
+        >
+          {icon.symbol}
+        </motion.span>
+      ))}
+    </div>
+  );
+};
+
+/* ---------------- HOME COMPONENT ---------------- */
+const Home = () => {
+  const images = [img1, img2, img3];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -58,7 +98,7 @@ const Home = () => {
       {/* ---------------- SLIDER SECTION ---------------- */}
       <section className="mt-16 relative">
         <div className="w-full h-[35vh] sm:h-[45vh] md:h-[60vh] lg:h-[70vh] xl:h-[80vh] relative overflow-hidden bg-white flex items-center justify-center pb-12">
-
+          
           <AnimatePresence>
             {images.map(
               (img, index) =>
@@ -66,7 +106,7 @@ const Home = () => {
                   <motion.img
                     key={index}
                     src={img}
-                    alt="slider"
+                    alt={`slider ${index}`}
                     initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
@@ -87,12 +127,7 @@ const Home = () => {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`h-3 w-3 rounded-full transition-all duration-300
-                  ${
-                    index === currentIndex
-                      ? "bg-white scale-125"
-                      : "bg-white/50"
-                  }
-                `}
+                  ${index === currentIndex ? "bg-white scale-125" : "bg-white/50"}`}
               />
             ))}
           </div>
@@ -100,14 +135,18 @@ const Home = () => {
       </section>
 
       {/* ---------------- WELCOME SECTION ---------------- */}
-      <section className="py-16 px-6 md:px-20 bg-white">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <section className="relative py-16 px-6 md:px-20 bg-white overflow-hidden">
+        {/* Floating Icons */}
+        <FloatingIcons />
 
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center relative z-10">
+          
           {/* Left Text */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
+            viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[#653239] mb-4">
               Welcome to Rim Mehndi Art
@@ -126,11 +165,12 @@ const Home = () => {
           <motion.div
             className="flex justify-center"
             initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
+            viewport={{ once: true }}
           >
             <img
-              src="/src/assets/mylogo.png"
+              src={myLogo}
               alt="Rim Mehndi Art"
               className="w-full max-w-md rounded-xl shadow-lg object-cover"
             />
